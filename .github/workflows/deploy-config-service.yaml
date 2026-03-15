@@ -57,5 +57,5 @@ jobs:
           kubectl set image deployment/${{ env.SERVICE_NAME }} \
           ${{ env.SERVICE_NAME }}=${{ env.IMAGE_NAME }}:${{ github.sha }} \
           -n lovable-core
-          
+
           kubectl rollout status deployment/${{ env.SERVICE_NAME }} -n lovable-core
