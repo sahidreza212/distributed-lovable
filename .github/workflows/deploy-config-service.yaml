@@ -3,13 +3,13 @@ name: Deploy Config Service
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - 'config-service/**'
 
 env:
   SERVICE_NAME: config-service
-  IMAGE_NAME: anuj55149/lovable-config-service
+  IMAGE_NAME: sahidreza01/lovable-config-service
 
 permissions:
   id-token: write
