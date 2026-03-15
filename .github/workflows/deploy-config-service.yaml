@@ -32,7 +32,7 @@ jobs:
           cache: maven
 
       - name: Build and Push Docker Image with Jib
-        working-directory: ./${{ env.SERVICE_NAME }}
+        working-directory: ./${{ env.SERVICE_NAME }}/config-service
         run: |
           ./mvnw compile jib:build \
             -Djib.to.image=docker.io/${{ env.IMAGE_NAME }}:${{ github.sha }} \
