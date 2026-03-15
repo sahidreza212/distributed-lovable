@@ -34,7 +34,7 @@ jobs:
       - name: Build and Push Docker Image with Jib
         working-directory: ./config-service/config-service
         run: |
-          chmod +x mvnw
+        
           ./mvnw compile jib:build \
             -Djib.to.image=docker.io/${{ env.IMAGE_NAME }}:${{ github.sha }} \
             -Djib.to.tags=latest \
