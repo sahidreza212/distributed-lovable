@@ -1,0 +1,2 @@
+com.sarm.distributed_lovable.common_lib.error.SharedExceptionAutoConfiguration
+com.sarm.distributed_lovable.common_lib.security.SharedSecurityAutoConfiguration
