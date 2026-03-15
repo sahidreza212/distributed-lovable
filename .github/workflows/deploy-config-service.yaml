@@ -3,13 +3,13 @@ name: Deploy Config Service
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - 'config-service/**'
 
 env:
   SERVICE_NAME: config-service
-  IMAGE_NAME: sahidreza01/lovable-config-service
+  IMAGE_NAME: anuj55149/lovable-config-service
 
 permissions:
   id-token: write
@@ -32,8 +32,8 @@ jobs:
           cache: maven
 
       - name: Build and Push Docker Image with Jib
+        working-directory: ./config-service/config-service
         run: |
-          working-directory: ./config-service/config-service
           chmod +x mvnw
           ./mvnw compile jib:build \
             -Djib.to.image=docker.io/${{ env.IMAGE_NAME }}:${{ github.sha }} \
@@ -58,5 +58,5 @@ jobs:
           kubectl set image deployment/${{ env.SERVICE_NAME }} \
           ${{ env.SERVICE_NAME }}=${{ env.IMAGE_NAME }}:${{ github.sha }} \
           -n lovable-core
-
+          
           kubectl rollout status deployment/${{ env.SERVICE_NAME }} -n lovable-core
